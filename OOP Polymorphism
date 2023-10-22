@@ -1,0 +1,129 @@
+using System;
+
+class Geometri
+{
+    public virtual double Area()
+    {
+        return 0.0;
+    }
+}
+
+class Rektangel : Geometri
+{
+    public double Längd { get; set; }
+    public double Bredd { get; set; }
+
+    public Rektangel()
+    {
+        Längd = 5;
+        Bredd = 3;
+    }
+
+    public override double Area()
+    {
+        return Längd * Bredd;
+    }
+}
+
+class Fyrkant : Geometri
+{
+    public double Sida { get; set; }
+
+    public Fyrkant()
+    {
+        Sida = 4;
+    }
+
+    public override double Area()
+    {
+        return Sida * Sida;
+    }
+}
+
+class Cirkel : Geometri
+{
+    public double Radie { get; set; }
+
+    public Cirkel()
+    {
+        Radie = 4;
+    }
+
+    public override double Area()
+    {
+        return Math.PI * Math.Pow(Radie, 2);
+    }
+}
+
+class Parallellogram : Geometri
+{
+    public double Bas { get; set; }
+    public double Höjd { get; set; }
+
+    public Parallellogram()
+    {
+        Bas = 6;
+        Höjd = 4;
+    }
+
+    public override double Area()
+    {
+        return Bas * Höjd;
+    }
+}
+
+class Ellips : Geometri
+{
+    public double StörreAxel { get; set; }
+    public double MindreAxel { get; set; }
+
+    public Ellips()
+    {
+        StörreAxel = 7;
+        MindreAxel = 5;
+    }
+
+    public override double Area()
+    {
+        return Math.PI * StörreAxel * MindreAxel;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Geometri[] former = new Geometri[]
+        {
+            new Rektangel(),
+            new Fyrkant(),
+            new Cirkel(),
+            new Parallellogram(),
+            new Ellips()
+        };
+
+        foreach (var form in former)
+        {
+            if (form is Rektangel)
+            {
+                Console.WriteLine("Rektangel Area: " + form.Area());
+            }
+            else if (form is Fyrkant)
+            {
+                Console.WriteLine("Fyrkant Area: " + form.Area());
+            }
+            else if (form is Cirkel)
+            {
+                Console.WriteLine("Cirkel Area: " + form.Area());
+            }
+            else if (form is Parallellogram)
+            {
+                Console.WriteLine("Parallellogram Area: " + form.Area());
+            }
+            else if (form is Ellips)
+            {
+                Console.WriteLine("Ellips Area: " + form.Area());
+            }
+        }
+    }
+}
